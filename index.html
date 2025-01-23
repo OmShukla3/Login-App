@@ -9,6 +9,7 @@
         body {
             font-family: 'Arial', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -118,12 +119,27 @@
             from { bottom: 30px; opacity: 1; }
             to { bottom: 0; opacity: 0; }
         }
+
+        #footer {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            color:black;
+        }
     </style>
 </head>
 <body>
     <div class="container" id="loginPage">
         <h2>Login</h2>
         <input type="password" id="password" class="input-field" placeholder="Enter Password" required>
+        <div>
+            <input type="checkbox" id="showPassword" onclick="togglePassword()"> 
+            <label for="showPassword" style="color: white;">Show Password</label>
+        </div>
         <button class="btn" onclick="login()">Login</button>
         <p id="errorMsg">Wrong password!</p>
     </div>
@@ -135,12 +151,23 @@
 
     <div id="toast">Login Successful!</div>
 
+    <div id="footer">Developer: Om Shukla</div>
+
     <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+
         function login() {
             const password = document.getElementById("password").value;
             const errorMsg = document.getElementById("errorMsg");
 
-            if (password === "cracknhihogabhai") {
+            if (password === "omjishukla1076") {
                 // Show Toast Message
                 const toast = document.getElementById("toast");
                 toast.className = "show";
